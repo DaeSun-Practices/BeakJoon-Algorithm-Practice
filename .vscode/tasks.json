@@ -24,35 +24,10 @@
             "group": {
                 "kind": "build",
                 "isDefault": true
-            }
-        },
-        {
-            "label": "exec",
-            "type": "shell",
-            "command": "${fileDirname}/${fileBasenameNoExtension}.out",
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            }
-        },
-        {
-            "type": "cppbuild",
-            "label": "C/C++: clang++ build active file",
-            "command": "/usr/local/opt/llvm/bin/clang++",
-            "args": [
-                "-g",
-                "${file}",
-                "-o",
-                "${fileDirname}/${fileBasenameNoExtension}"
-            ],
-            "options": {
-                "cwd": "${workspaceFolder}"
             },
-            "problemMatcher": [
-                "$gcc"
-            ],
-            "group": "build",
-            "detail": "compiler: /usr/local/opt/llvm/bin/clang++"
+            "presentation": {
+                "showReuseMessage": false
+            }
         }
     ]
   }
