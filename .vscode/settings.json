@@ -1,7 +1,7 @@
 {
     "files.associations": {
-        "algorithm": "cpp",
-        "utility": "cpp"
-    },
-    "python.pythonPath": "/usr/bin/python3"
+        "iostream": "cpp",
+        "ostream": "cpp",
+        "random": "cpp"
+    }
 }
