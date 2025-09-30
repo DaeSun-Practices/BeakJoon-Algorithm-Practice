@@ -1,0 +1,1 @@
+{"name":"Local: main","url":"/home/song/BeakJoon-Algorithm-Practice/11659/main.cpp","tests":[{"id":1758800994885,"input":"2\naabbabab aaaabbbb\naabbab abaabb","output":"5\n2"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/song/BeakJoon-Algorithm-Practice/11659/main.cpp","group":"local","local":true}
