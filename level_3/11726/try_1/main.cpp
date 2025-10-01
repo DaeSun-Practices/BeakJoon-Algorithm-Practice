@@ -21,6 +21,7 @@ int main () {
 
         for (int idx=0; idx < second_count; idx++){
             current_method *= total_count - idx;
+            current_method %= 10007;
         }
 
         for (int idx=0; idx < second_count; idx++){
