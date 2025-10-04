@@ -52,6 +52,8 @@
         "typeinfo": "cpp",
         "sstream": "cpp",
         "chrono": "cpp",
-        "typeindex": "cpp"
+        "typeindex": "cpp",
+        "source_location": "cpp",
+        "stacktrace": "cpp"
     }
 }
