@@ -54,6 +54,7 @@
         "chrono": "cpp",
         "typeindex": "cpp",
         "source_location": "cpp",
-        "stacktrace": "cpp"
+        "stacktrace": "cpp",
+        "unordered_set": "cpp"
     }
 }
