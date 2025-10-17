@@ -56,6 +56,10 @@
         "source_location": "cpp",
         "stacktrace": "cpp",
         "unordered_set": "cpp",
-        "span": "cpp"
+        "span": "cpp",
+        "bitset": "cpp",
+        "ranges": "cpp",
+        "regex": "cpp",
+        "valarray": "cpp"
     }
 }
