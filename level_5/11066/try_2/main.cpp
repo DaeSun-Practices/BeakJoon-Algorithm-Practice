@@ -1,55 +1,66 @@
 #include <bits/stdc++.h>
-
 using namespace std;
+using ll = long long;
+const ll INF = (1LL<<62);
 
-
-int main () {
+int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
-
-    int T, N;
-    long long x;
-    cin >> T;
-
-    long long aweser[T];
-
-    for (int _=0; _<T; _++){
-        cin >> N;
-
-        vector<long long> file_vector;
-
-        long long cost = 0;
-        long long temp = 0;
+    
+    int T;
+    if(!(cin >> T)) return 0;
 
 
-        for (int i=0; i<N; i++){
-            cin >> x;
-            file_vector.push_back(x);
+    while (T--) {
+        int K;
+        cin >> K;
+        vector<ll> a(K+1);
+        for (int i = 1; i <= K; ++i) cin >> a[i];
+        
+        // prefix sums
+        vector<ll> ps(K+1, 0);
+        for (int i = 1; i <= K; ++i) ps[i] = ps[i-1] + a[i];
+        auto range_sum = [&](int l, int r)->ll { return ps[r] - ps[l-1]; };
+        
+        // dp and opt
+        vector<vector<ll>> dp(K+2, vector<ll>(K+2, 0));
+        vector<vector<int>> opt(K+2, vector<int>(K+2, 0));
+        
+        for (int i = 1; i <= K; ++i) {
+            dp[i][i] = 0;
+            opt[i][i] = i;
         }
+        
+        for (int len = 2; len <= K; ++len) {
+            for (int i = 1; i + len - 1 <= K; ++i) {
 
-        sort(file_vector.begin(), file_vector.end(), greater());
-        //for (long long y : file_vector) cout << y << " ";
+                int j = i + len - 1;
+                dp[i][j] = INF;
 
-        while (file_vector.size() > 1){
-            temp = 0;
+                // Knuth: opt[i][j-1] <= opt[i][j] <= opt[i+1][j]
+                int start = opt[i][j-1];
+                int end = opt[i+1][j];
+                if (start == 0) start = i; 
+                if (end == 0) end = j-1;
+                if (start > end) swap(start, end);
 
-            temp += file_vector.back();
-            file_vector.pop_back();
-            temp += file_vector.back();
-            file_vector.pop_back();
+                // restrict to [i, j-1]
+                start = max(start, i);
+                end = min(end, j-1);
 
-            file_vector.push_back(temp);
-            cost += temp;
+                for (int k = start; k <= end; ++k) {
+                    ll cost = dp[i][k] + dp[k+1][j] + range_sum(i, j);
+                    
+                    if (cost < dp[i][j]) {
+                        dp[i][j] = cost;
+                        opt[i][j] = k;
+                    }
+                }
 
-            sort(file_vector.begin(), file_vector.end(), greater());
+            }
         }
-
-        aweser[_] = cost;
+        
+        cout << dp[1][K] << '\n';
     }
-
-    for (int i=0; i<T; i++) {
-        cout << aweser[i] << endl;
-    }
-
     return 0;
 }
